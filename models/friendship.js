@@ -36,7 +36,7 @@ Frienship.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'friendship',
       }
 )
 
