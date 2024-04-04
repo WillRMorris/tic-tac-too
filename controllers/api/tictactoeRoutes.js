@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.ws('/echo', (ws, req) => {
+router.ws('/', (ws, req) => {
     ws.on('message', msg => {
       console.log(msg);
     })
@@ -9,5 +9,7 @@ router.ws('/echo', (ws, req) => {
       console.log('websocket was closed')
     })
 })
+
+
 
 module.exports = router;

@@ -1,7 +1,9 @@
-const testButton = document.getElementById("test-button");
+const testButtons = document.getElementsByClassName("test-button");
 
-const echoSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/echo/'
-const socket = new WebSocket(echoSocketUrl);
+const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/'
+const socket = new WebSocket(tictactoeSocketUrl);
+
+let boardArray = [[0,0,0],[0,0,0], [0,0,0]];
 
 socket.onopen = () => {
   socket.send('Here\'s some text that the server is urgently awaiting!'); 
@@ -11,8 +13,15 @@ socket.onmessage = e => {
   console.log('Message from server:', e.data)
 }
 
-const sendMessage = () => {
-    socket.send("Test message");
+const makeMove = (event) => {
+    const xCoord = event.currentTarget.getAttribute("data-x");
+    const yCoord = event.currentTarget.getAttribute("data-y");
+
+    boardArray[xCoord][yCoord] = playerId;
+    
+    socket.send(boardArray);
 }
 
-testButton.addEventListener("click", sendMessage);
+for(let i = 0; i < testButtons.length; i++){
+    testButtons[i].addEventListener("click", makeMove);
+}
