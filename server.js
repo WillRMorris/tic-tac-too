@@ -11,10 +11,14 @@ const PORT = process.env.PORT || 3001;
 
 // sets up the web sockets. must come before routes is defined
 const enableWs = require('express-ws');
-enableWs(app);
+const wsInstance = enableWs(app);
+
+app.use((req, response, next) => {
+  req.wsInstance = wsInstance;
+  next();
+})
 
 const routes = require('./controllers');
-
 
 const sess = {
   secret: 'Super secret secret',

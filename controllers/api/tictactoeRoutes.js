@@ -1,8 +1,15 @@
 const router = require('express').Router();
+const WebSocket = require('ws');
+
 
 router.ws('/', (ws, req) => {
-    ws.on('message', msg => {
-      console.log(msg);
+    ws.on('message', (board) => {
+        const wss = req.wsInstance.getWss();
+        wss.clients.forEach((client) => {
+            if(client.readyState === WebSocket.OPEN){
+                client.send(board);
+            }
+        });
     })
   
     ws.on('close', () => {
