@@ -5,7 +5,7 @@ const {checkForVictory: checkForGameOver, GameStates} = require('../../utils/tic
 // the express-ws library adds ws as a new type of route like GET or POST
 // a ws route is different because it stays active until turned off
 // inside of the ws route there are ws.on statements that are called whenever the requirements are met (such as message or close)
-router.ws('/', (ws, req) => {
+router.ws('/:id', (ws, req) => {
     //called whenever a client sends the server a message
     ws.on('message', (gameData) => {
         gameData = JSON.parse(gameData);

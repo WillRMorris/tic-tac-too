@@ -1,7 +1,8 @@
 const testButtons = document.getElementsByClassName("test-button");
 
 // this sets up the url where the web socket will be accessed because express-ws can't use relative urls
-const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/'
+const gameId = 1;
+const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/' + gameId;
 const socket = new WebSocket(tictactoeSocketUrl);
 
 // this variable stores all the possible states the game could be in
