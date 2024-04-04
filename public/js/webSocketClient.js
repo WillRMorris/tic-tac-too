@@ -1,14 +1,17 @@
 const testButtons = document.getElementsByClassName("test-button");
 
+// this sets up the url where the web socket will be accessed because express-ws can't use relative urls
 const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/'
 const socket = new WebSocket(tictactoeSocketUrl);
 
+// this variable stores all the possible states the game could be in
 const GameStates ={
     PLAYER1TURN: "PLAYER1TURN",
     PLAYER2TURN: "PLAYER2TURN",
     GAMEOVER: "GAMEOVER"
 }
 
+// this object will be passed back and forth between the server and the clients
 let gameData = {
     gameState: GameStates.PLAYER1TURN,
     boardArray: [[0,0,0],[0,0,0],[0,0,0]],
@@ -21,6 +24,7 @@ let gameData = {
 //   socket.send('Here\'s some text that the server is urgently awaiting!'); 
 // }
 
+// This is called whenever the client recieves a message from the server
 socket.onmessage = e => {
     gameData = JSON.parse(e.data);
     
@@ -34,6 +38,7 @@ socket.onmessage = e => {
     }
 }
 
+// this is called when the player clicks on a board position
 const makeMove = (event) => {
     if(!isMyTurn()){
         console.log("Not your turn");
