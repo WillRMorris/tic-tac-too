@@ -70,5 +70,4 @@ const showResults = (gameData, counter) => {
     return [gameData, false];
 }
 
-module.exports = {checkForVictory: checkForGameOver,
-GameStates};
+module.exports = {checkForGameOver};

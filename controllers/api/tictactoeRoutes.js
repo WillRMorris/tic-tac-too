@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const WebSocket = require('ws');
-const {checkForVictory: checkForGameOver, GameStates} = require('../../utils/tictactoe');
+const {checkForGameOver} = require('../../utils/tictactoeHelpers');
 
 // the express-ws library adds ws as a new type of route like GET or POST
 // a ws route is different because it stays active until turned off
