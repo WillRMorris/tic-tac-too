@@ -17,3 +17,24 @@ const switchTurn = () => {
         gameData.gameState = GameStates.PLAYER1TURN;
     }
 }
+
+const updateBoard = () => {
+    let testingString = "";
+    if(isTesting != null){
+        testingString = "../"
+    }
+
+    for(let i = 0; i < spaces.length; i++){
+        switch(gameData.boardArray[spaces[i].getAttribute("data-x")][spaces[i].getAttribute("data-y")]){
+            case 0:
+                spaces[i].innerHTML = `<img src="${testingString}images/blank.svg">`;
+                break;
+            case 1:
+                spaces[i].innerHTML = `<img src="${testingString}images/x.svg">`;
+                break;
+            case -1:
+                spaces[i].innerHTML = `<img src="${testingString}images/circle.svg">`;
+                break;
+        }
+    }
+}

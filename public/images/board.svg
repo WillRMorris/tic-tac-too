@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="179.99998mm"
+   height="180mm"
+   viewBox="0 0 179.99998 180"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="x.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="TicTacToe.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.5543368"
+     inkscape:cx="125.37504"
+     inkscape:cy="400.47856"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1072"
+     inkscape:window-y="431"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3248"
+       inkscape:export-filename="..\..\bootcamp\tic-tac-too\public\images\board.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.499999;stroke-linecap:square;paint-order:markers fill stroke"
+         id="rect234"
+         width="10"
+         height="180"
+         x="115"
+         y="-7.0307254e-15"
+         ry="7.3354363" />
+      <rect
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.499999;stroke-linecap:square;paint-order:markers fill stroke"
+         id="rect234-4"
+         width="10"
+         height="180"
+         x="55"
+         y="-7.0307254e-15"
+         ry="7.3354363" />
+      <rect
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.499998;stroke-linecap:square;paint-order:markers fill stroke"
+         id="rect234-4-4"
+         width="10"
+         height="180"
+         x="55"
+         y="-180"
+         ry="7.3354363"
+         transform="rotate(90)" />
+      <rect
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.499998;stroke-linecap:square;paint-order:markers fill stroke"
+         id="rect234-4-4-7"
+         width="10"
+         height="180"
+         x="115"
+         y="-180"
+         ry="7.3354363"
+         transform="rotate(90)" />
+    </g>
+  </g>
+</svg>

@@ -1,4 +1,4 @@
-const testButtons = document.getElementsByClassName("test-button");
+const spaces = document.getElementsByClassName("space");
 
 // this sets up the url where the web socket will be accessed because express-ws can't use relative urls
 const gameId = 1;
@@ -29,6 +29,8 @@ let gameData = {
 socket.onmessage = e => {
     gameData = JSON.parse(e.data);
     
+    updateBoard();
+
     console.log('New Board:');
     console.log(gameData.boardArray[0][0], gameData.boardArray[1][0], gameData.boardArray[2][0]);
     console.log(gameData.boardArray[0][1], gameData.boardArray[1][1], gameData.boardArray[2][1]);
@@ -60,6 +62,6 @@ const makeMove = (event) => {
     }
 }
 
-for(let i = 0; i < testButtons.length; i++){
-    testButtons[i].addEventListener("click", makeMove);
+for(let i = 0; i < spaces.length; i++){
+    spaces[i].addEventListener("click", makeMove);
 }
