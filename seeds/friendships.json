@@ -16,5 +16,23 @@
         "friend_id": 3,
         "ttt_wins": 6,
         "ttt_losses": 12
+    },
+    {
+        "user_id": 2,
+        "friend_id": 1,
+        "ttt_wins": 19,
+        "ttt_losses": 7
+    },
+    {
+        "user_id": 3,
+        "friend_id": 1,
+        "ttt_wins": 4,
+        "ttt_losses": 8
+    },    
+    {
+        "user_id": 3,
+        "friend_id": 2,
+        "ttt_wins": 12,
+        "ttt_losses": 6
     }
 ]

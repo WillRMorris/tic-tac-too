@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User, Frienship} = require('../../models');
+const {User, Friendship} = require('../../models');
 
 router.post('/login', async (req, res) => {
     try {
@@ -71,6 +71,40 @@ router.get('/:id', async (req, res)=>{
   catch(err){
     res.status(400).json(err);
 
+  }
+})
+
+//updates user. Checks for a frienndIds in the req.body. if it exists, bulk create friendships for every relationship (both ways so two per pair one for each as the user)
+router.put('/:id', async (req, res) =>{
+  try{
+    const userData = await User.update(req.body, {where: {id: req.params.id}})
+    if(req.body.friendIds && req.body.friendIds.length){
+      //some variables to make this a little neater
+      let user = req.params.id;
+      let friends = req.body.friendIds;
+
+      let friendsData= [];
+      for (let i = 0; i < friends.length; i++){
+        let asUser = {
+          user_id: user,
+          friend_id: friends[i]
+        }
+        friendsData.push(asUser);
+
+        let asFriend = {
+          user_id: friends[i],
+          friend_id: user
+        }
+      friendsData.push(asFriend);
+      }
+      return await Friendship.bulkCreate(friendsData);
+    }
+
+    res.json(userData)
+  }
+  catch(err){
+    res.status(400).json(err);
+    console.log(err)
   }
 })
 module.exports = router;
