@@ -27,13 +27,6 @@ User.init(
           allowNull: false,
 
         },
-        friend_ids: {
-          type: DataTypes.INTEGER,
-          references: {
-              model: 'user',
-              key: 'id',
-          },
-        }
     },
     {
       hooks: {
