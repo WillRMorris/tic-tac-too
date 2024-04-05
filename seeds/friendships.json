@@ -1,0 +1,20 @@
+[
+    {
+        "user_id": 1,
+        "friend_id": 2,
+        "ttt_wins": 7,
+        "ttt_losses": 19
+    },
+    {
+        "user_id": 1,
+        "friend_id": 3,
+        "ttt_wins": 8,
+        "ttt_losses": 4
+    },    
+    {
+        "user_id": 2,
+        "friend_id": 3,
+        "ttt_wins": 6,
+        "ttt_losses": 12
+    }
+]
