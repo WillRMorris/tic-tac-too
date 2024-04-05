@@ -1,0 +1,51 @@
+#login-form{
+    width: 90%;
+    max-width: 15em;
+    margin: 3em auto;
+    background-color: var(--main);
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 0.5em;
+    color: var(--secondary);
+    font-size: 2em;
+}
+
+#login-form label,
+#login-form input{
+    margin: 0.5em 0;
+}
+
+.submit-button{
+    background-color: var(--secondary);
+    color: var(--main);
+    outline: none;
+    border: none;
+    font-size: 1em;
+    margin: 0.5em auto 0;
+    display: block;
+}
+
+.submit-button:hover{
+    cursor: pointer;
+    color: var(--highlight);
+}
+
+input{
+    font-size: 1em;
+    max-width: 8em;
+    font-family: inherit;
+    background-color: var(--white);
+}
+
+#login-form p{
+    margin: 0.5em 0;
+}
+
+#login-form a{
+    color:var(--secondary);
+}
+
+#login-form a:hover{
+    color: var(--highlight);
+    cursor: pointer;
+}

@@ -1,3 +1,10 @@
+:root{
+    --main: #2F2963;
+    --secondary: #827EB4;
+    --highlight: #EF946C;
+    --white: #F3F8F2;
+}
+
 #board-holder{
     position: relative;
     width: 90%;
@@ -40,4 +47,12 @@
 
 img{
     pointer-events: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    cursor: pointer;
 }

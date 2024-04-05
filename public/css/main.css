@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    background-color: var(--white);
+}
+
+header{
+    background-color: var(--main);
+    padding: 1em 0em;
+}
+
+header a{
+    color: var(--secondary);
+    font-size: 2em;
+    margin: 0 1em;
+}
+
+header a:hover{
+    color: var(--highlight);
+}
