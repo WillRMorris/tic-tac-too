@@ -2,18 +2,6 @@ const router = require('express').Router();
 const { query } = require('express');
 const {User, Friendship} = require('../../models');
 // api/friends route
-router.get('/friendships', async (req, res) => {
-    //finds all friendships includes users
-    try{
-      const friendsData = await Frienship.findAll({
-      })
-      res.json(friendsData);
-    }
-    catch{
-      res.status(400).json('err')
-  
-    }
-  });
 
   router.get('/:id', async (req, res) => {
     //finds all of a users friends includes user table
@@ -53,11 +41,13 @@ router.get('/friendships', async (req, res) => {
 
   async function specifier(data, val){
     console.log(data);
-    let set = await data.json();
-    let array = set[0].target;
-    for (let user in array){
-        if(user.id == val){
-            return user;
+    let set = data;
+    let array = set[0]._previousDataValues.target;
+    console.log(array);
+
+    for (let i = 0; i< array.length; i++){
+        if(array[i].dataValues.id == val){
+            return array[i];
         }
     }
     return console.log('specifier failed');
