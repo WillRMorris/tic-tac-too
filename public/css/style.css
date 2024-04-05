@@ -1,6 +1,6 @@
 :root{
     --main: #2F2963;
-    --secondary: #827EB4;
+    --secondary: #9B98C3;
     --highlight: #EF946C;
     --white: #F3F8F2;
 }
@@ -55,4 +55,10 @@ a{
 
 a:hover{
     cursor: pointer;
+}
+
+.page-title{
+    font-size: 5em;
+    color:var(--main);
+    text-align: center;
 }
