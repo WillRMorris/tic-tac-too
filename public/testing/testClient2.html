@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TestClient</title>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-    <div>
-        <button data-x="0" data-y="0" class="test-button">Test Button 1</button>
-        <button data-x="1" data-y="0" class="test-button">Test Button 2</button>
-        <button data-x="2" data-y="0" class="test-button">Test Button 3</button>
-    </div>
-    <div>
-        <button data-x="0" data-y="1" class="test-button">Test Button 4</button>
-        <button data-x="1" data-y="1" class="test-button">Test Button 5</button>
-        <button data-x="2" data-y="1" class="test-button">Test Button 6</button>
-    </div>
-    <div>
-        <button data-x="0" data-y="2" class="test-button">Test Button 7</button>
-        <button data-x="1" data-y="2" class="test-button">Test Button 8</button>
-        <button data-x="2" data-y="2" class="test-button">Test Button 9</button>
+    <div id="board-holder">
+        <img id="board" src="../images/board.svg">
+        <div class="space-holder-holder">
+            <div class="space-holder">
+                <button data-x="0" data-y="0" class="space"><img src="../images/blank.svg"></button>
+                <button data-x="1" data-y="0" class="space"><img src="../images/blank.svg"></button>
+                <button data-x="2" data-y="0" class="space"><img src="../images/blank.svg"></button>
+            </div>
+                <div class="space-holder">
+                <button data-x="0" data-y="1" class="space"><img src="../images/blank.svg"></button>
+                <button data-x="1" data-y="1" class="space"><img src="../images/blank.svg"></button>
+                <button data-x="2" data-y="1" class="space"><img src="../images/blank.svg"></button>
+            </div>
+                <div class="space-holder">
+                <button data-x="0" data-y="2" class="space"><img src="../images/blank.svg"></button>
+                <button data-x="1" data-y="2" class="space"><img src="../images/blank.svg"></button>
+                <button data-x="2" data-y="2" class="space"><img src="../images/blank.svg"></button>
+            </div>
+        </div>
     </div>
 </body>
-<script>const playerId = -1</script>
+<script>const playerId = -1; const isTesting = true</script>
 <script src="../js/ticTacToeFunctions.js"></script>
 <script src="../js/webSocketClient.js"></script>
 </html>
