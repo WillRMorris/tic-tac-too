@@ -54,3 +54,5 @@ const {User, Friendship} = require('../../models');
     
   }
   module.exports = router;
+
+  //updates a friendship's shared stats.
