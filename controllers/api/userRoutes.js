@@ -63,4 +63,14 @@ router.post('/signUp', async (req,res) => {
     }
 });
 
+router.get('/:id', async (req, res)=>{
+  try{
+    const userData = await User.findByPk(req.params.id, {exclude: 'password'})
+    res.json(userData);
+  }
+  catch(err){
+    res.status(400).json(err);
+
+  }
+})
 module.exports = router;

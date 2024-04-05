@@ -1,14 +1,14 @@
 const User = require('./User');
-const Frienship = require('./friendship')
+const Friendship = require('./Friendship')
 
 User.belongsToMany(User, {
     as: 'target',
-    through: Frienship,
+    through: Friendship,
     foreignKey: 'user_id'
 })
 User.belongsToMany(User, {
     as: 'friend',
-    through: Frienship,
+    through: Friendship,
     foreignKey: 'friend_id'
 })
-module.exports = {User, Frienship}
+module.exports = {User, Friendship}
