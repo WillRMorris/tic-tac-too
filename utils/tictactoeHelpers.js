@@ -1,7 +1,8 @@
 const GameStates ={
     PLAYER1TURN: "PLAYER1TURN",
     PLAYER2TURN: "PLAYER2TURN",
-    GAMEOVER: "GAMEOVER"
+    GAMEOVER: "GAMEOVER",
+    WAITING: "WAITING"
 }
 
 const checkForGameOver = (gameData) => {
@@ -70,4 +71,4 @@ const showResults = (gameData, counter) => {
     return [gameData, false];
 }
 
-module.exports = {checkForGameOver};
+module.exports = {checkForGameOver, GameStates};

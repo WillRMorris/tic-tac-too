@@ -62,3 +62,16 @@ a:hover{
     color:var(--main);
     text-align: center;
 }
+
+#announcements{
+    position: absolute;
+    display: none;
+    background-color: var(--main);
+    color: var(--secondary);
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    padding: 0.3em;
+    top: 5em;
+}

@@ -1,33 +1,56 @@
 const spaces = document.getElementsByClassName("space");
 
 // this sets up the url where the web socket will be accessed because express-ws can't use relative urls
-const gameId = 1;
-const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/' + gameId;
+const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/' + uuid;
 const socket = new WebSocket(tictactoeSocketUrl);
+
+let playerId = 0;
 
 // this variable stores all the possible states the game could be in
 const GameStates ={
     PLAYER1TURN: "PLAYER1TURN",
     PLAYER2TURN: "PLAYER2TURN",
-    GAMEOVER: "GAMEOVER"
+    GAMEOVER: "GAMEOVER",
+    WAITING: "WAITING"
+}
+
+const MessageTypes ={
+    GAMEDATA: "GAMEDATA",
+    READY: "READY",
+    START: "START"
 }
 
 // this object will be passed back and forth between the server and the clients
 let gameData = {
-    gameState: GameStates.PLAYER1TURN,
+    messageType: MessageTypes.GAMEDATA,
+    gameState: GameStates.WAITING,
     boardArray: [[0,0,0],[0,0,0],[0,0,0]],
     newMove: null,
     message: "new game",
-    movesMade: 0
+    movesMade: 0,
+    xAvailable: true,
+    oAvailable: true
 }
-
-// socket.onopen = () => {
-//   socket.send('Here\'s some text that the server is urgently awaiting!'); 
-// }
 
 // This is called whenever the client recieves a message from the server
 socket.onmessage = e => {
-    gameData = JSON.parse(e.data);
+    let message = JSON.parse(e.data);
+
+    switch(message.messageType){
+        case MessageTypes.GAMEDATA:
+            gameDataMessage(message);
+            break;
+        case MessageTypes.READY:
+            playerId = message.playerId;
+            break;
+        case MessageTypes.START:
+            gameData.gameState = GameStates.PLAYER1TURN;
+            break;
+    }
+}
+
+const gameDataMessage = (message) => {
+    gameData = message;
     
     updateBoard();
 
@@ -65,3 +88,7 @@ const makeMove = (event) => {
 for(let i = 0; i < spaces.length; i++){
     spaces[i].addEventListener("click", makeMove);
 }
+
+document.getElementById("ready-button").addEventListener("click", () => {
+    socket.send(JSON.stringify({messageType: MessageTypes.READY}));
+})

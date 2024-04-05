@@ -1,4 +1,6 @@
 const isMyTurn = () => {
+    console.log(gameData.gameState);
+    console.log(playerId);
     if(playerId == 1 && gameData.gameState == GameStates.PLAYER1TURN) {
         return true;
     }
@@ -19,21 +21,16 @@ const switchTurn = () => {
 }
 
 const updateBoard = () => {
-    let testingString = "";
-    if(isTesting != null){
-        testingString = "../"
-    }
-
     for(let i = 0; i < spaces.length; i++){
         switch(gameData.boardArray[spaces[i].getAttribute("data-x")][spaces[i].getAttribute("data-y")]){
             case 0:
-                spaces[i].innerHTML = `<img src="${testingString}images/blank.svg">`;
+                spaces[i].innerHTML = `<img src="/images/blank.svg">`;
                 break;
             case 1:
-                spaces[i].innerHTML = `<img src="${testingString}images/x.svg">`;
+                spaces[i].innerHTML = `<img src="/images/x.svg">`;
                 break;
             case -1:
-                spaces[i].innerHTML = `<img src="${testingString}images/circle.svg">`;
+                spaces[i].innerHTML = `<img src="/images/circle.svg">`;
                 break;
         }
     }
