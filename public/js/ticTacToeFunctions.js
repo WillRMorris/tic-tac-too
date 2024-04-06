@@ -1,3 +1,5 @@
+const turnBanner = document.getElementById("turn-message");
+
 const isMyTurn = () => {
     console.log(gameData.gameState);
     console.log(playerId);
@@ -33,5 +35,32 @@ const updateBoard = () => {
                 spaces[i].innerHTML = `<img src="/images/circle.svg">`;
                 break;
         }
+    }
+}
+
+const updateTurnBanner = () =>{
+    switch(gameData.gameState){
+        case GameStates.WAITING:
+            turnBanner.innerText = "Waiting For Game To Start";
+            break;
+        case GameStates.PLAYER1TURN:
+            if(playerId == 1){
+                turnBanner.innerText = "Your Turn";
+            }
+            else{
+                turnBanner.innerText = "Waiting For Opponent"
+            }
+            break;
+        case GameStates.PLAYER2TURN:
+            if(playerId == -1){
+                turnBanner.innerText = "Your Turn";
+            }
+            else{
+                turnBanner.innerText = "Waiting For Opponent";
+            }
+            break;
+        case GameStates.GAMEOVER:
+            turnBanner.innerText = "Game Over";
+            break;
     }
 }

@@ -1,4 +1,5 @@
 const spaces = document.getElementsByClassName("space");
+const announcements = document.getElementById("announcements");
 
 // this sets up the url where the web socket will be accessed because express-ws can't use relative urls
 const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/' + uuid;
@@ -44,7 +45,9 @@ socket.onmessage = e => {
             playerId = message.playerId;
             break;
         case MessageTypes.START:
+            announcements.style.display = "none";
             gameData.gameState = GameStates.PLAYER1TURN;
+            updateTurnBanner();
             break;
     }
 }
@@ -53,6 +56,7 @@ const gameDataMessage = (message) => {
     gameData = message;
     
     updateBoard();
+    updateTurnBanner();
 
     console.log('New Board:');
     console.log(gameData.boardArray[0][0], gameData.boardArray[1][0], gameData.boardArray[2][0]);
@@ -61,6 +65,8 @@ const gameDataMessage = (message) => {
     
     if(gameData.gameState == GameStates.GAMEOVER){
         console.log(gameData.message);
+        announcements.innerText = gameData.message;
+        announcements.style.display = "block";
     }
 }
 
@@ -90,5 +96,6 @@ for(let i = 0; i < spaces.length; i++){
 }
 
 document.getElementById("ready-button").addEventListener("click", () => {
+    announcements.innerText = "Waiting For Other Player";
     socket.send(JSON.stringify({messageType: MessageTypes.READY}));
 })
