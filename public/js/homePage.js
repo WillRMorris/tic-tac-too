@@ -1,4 +1,4 @@
-
+// gets a new gameId from the server and goes to that page
 const host = async () => {
     let response = await fetch('/api/tictactoe/newId', {
         method: 'GET',
@@ -15,6 +15,7 @@ const host = async () => {
     document.location.replace(response.url);
 }
 
+// gets gameId of available game from the server and goes to that page
 const join = async () => {
     let response = await fetch('/api/tictactoe/getRandomId', {
         method: 'GET',

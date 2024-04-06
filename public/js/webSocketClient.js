@@ -15,6 +15,7 @@ const GameStates ={
     WAITING: "WAITING"
 }
 
+// every message sent between client and server includes a messageType variable so we can easily know what to do with the message
 const MessageTypes ={
     GAMEDATA: "GAMEDATA",
     READY: "READY",
@@ -34,6 +35,7 @@ let gameData = {
 }
 
 // This is called whenever the client recieves a message from the server
+// It checks what kind of message it was and decides what to do with it
 socket.onmessage = e => {
     let message = JSON.parse(e.data);
 
