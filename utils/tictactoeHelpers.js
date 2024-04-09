@@ -1,7 +1,8 @@
 const GameStates ={
     PLAYER1TURN: "PLAYER1TURN",
     PLAYER2TURN: "PLAYER2TURN",
-    GAMEOVER: "GAMEOVER"
+    GAMEOVER: "GAMEOVER",
+    WAITING: "WAITING"
 }
 
 const checkForGameOver = (gameData) => {
@@ -9,7 +10,7 @@ const checkForGameOver = (gameData) => {
     //check for draw
     if(gameData.movesMade >= 9){
         gameData.gameState = GameStates.GAMEOVER;
-        gameData.message = "It's a Draw!";
+        gameData.message = "Draw!";
         return gameData;
     }
 
@@ -60,14 +61,14 @@ const showResults = (gameData, counter) => {
     if(Math.abs(counter) == 3){
         gameData.gameState = GameStates.GAMEOVER;
         if(counter > 0){
-            gameData.message = "Player 1 Wins!";
+            gameData.message = "X's Win!";
         }
         else{
-            gameData.message = "Player 2 Wins!";
+            gameData.message = "O's Win!";
         }
         return [gameData, true];
     }
     return [gameData, false];
 }
 
-module.exports = {checkForGameOver};
+module.exports = {checkForGameOver, GameStates};

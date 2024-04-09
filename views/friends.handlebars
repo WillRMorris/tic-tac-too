@@ -1,0 +1,12 @@
+<h1 class="page-title">Friends List</h1>
+
+{{#each friends as |friend|}}
+<div class="friend-holder">
+    <h1>{{friend.username}}</h1>
+    <div class="wins-losses">
+        <p>Wins: {{friend.ttt_wins}}</p>
+        <p>Losses: {{friend.ttt_losses}}</p>
+    </div>
+    <button class="new-game-button">New Game</button>
+</div>
+{{/each}}

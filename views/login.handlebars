@@ -1,46 +1,13 @@
-<!-- Login Form Template -->
-<script id="login-template" type="text/x-handlebars-template">
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        
-        <button type="submit">Login</button>
-    </form>
-</script>
+<form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+    
+    <label for="password"> Password:</label>
+    <input type="password" id="password" name="password" required><br>
+    
+    <button class="submit-button" type="submit">Login</button>
 
-<!-- Container to render login form -->
-<div id="login-container"></div>
+    <p>Don't have an account? <a href="/signUp">Sign Up</a></p>
+</form>
 
-<script>
-    // Data for rendering the template (optional)
-    var data = {};
-
-    // Get the HTML content of the template
-    var templateSource = document.getElementById("login-template").innerHTML;
-
-    // Compile the template
-    var template = Handlebars.compile(templateSource);
-
-    // Render the template with data and append to the container
-    document.getElementById("login-container").innerHTML = template(data);
-
-    // Handle form submission
-    document.getElementById("login-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Get form data
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-
-        // Perform login validation or send login request to server
-        // Example:
-        // if (username === "admin" && password === "password") {
-        //     alert("Login successful!");
-        // } else {
-        //     alert("Invalid username or password");
-        // }
-    });
-</script>
+<script src="/js/login.js"></script>
