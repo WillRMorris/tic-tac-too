@@ -181,6 +181,17 @@ router.get('/getRandomId', async (req, res) => {
     const gameId = availableRandomGames[0];
     availableRandomGames.shift();
     res.json(gameId);
-})
+});
+
+//called when creating a new game between two friends
+router.get('/newPrivateId', async (req, res) => {
+    const newGameId = shortid.generate();
+
+    const newGame = new game;
+    newGame.gameId = newGameId;
+    currentGames.push(newGame);
+
+    res.json(newGameId);
+});
 
 module.exports = router;
