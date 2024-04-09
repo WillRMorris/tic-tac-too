@@ -22,7 +22,8 @@ function game() {
 const MessageTypes ={
     GAMEDATA: "GAMEDATA",
     READY: "READY",
-    START: "START"
+    START: "START",
+    CLOSE: "CLOSE"
 }
 
 // the express-ws library adds ws as a new type of route like GET or POST
@@ -41,6 +42,9 @@ router.ws('/:id', (ws, req) => {
                 break;
             case MessageTypes.READY:
                 handleReadyMessage(wss, ws, req.params.id);
+                break;
+            case MessageTypes.CLOSE:
+                handleCloseMessage(message);
                 break;
         }
     })
@@ -65,6 +69,7 @@ const handleGameDataMessage = (wss, gameData) =>{
 const handleReadyMessage = (wss, ws, gameId) =>{
     // this object will eventually be sent to the client
     const returnData ={
+        gameId: gameId,
         messageType: MessageTypes.READY,
         error: null
     }
@@ -113,7 +118,20 @@ const handleReadyMessage = (wss, ws, gameId) =>{
     // if both clients are ready remove game from currentGames array and send start message to clients
     if(serverData.allReady){
         currentGames.splice(currentGames.indexOf(serverData),1);
-        sendToClients(wss, {messageType:MessageTypes.START});
+        sendToClients(wss, {gameId: gameId, messageType:MessageTypes.START});
+    }
+}
+
+const handleCloseMessage = (message) =>{
+    const availableIndex = availableRandomGames.indexOf(message.gameId);
+    if(availableIndex != undefined){
+        availableRandomGames.splice(availableIndex, 1);
+    }
+    const currentIndex = currentGames.find((entry) => {
+        return entry.gameId == message.gameId;
+    })
+    if(currentIndex != undefined){
+        currentGames.splice(currentIndex, 1);
     }
 }
 

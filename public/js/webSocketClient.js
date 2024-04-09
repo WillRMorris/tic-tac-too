@@ -19,11 +19,13 @@ const GameStates ={
 const MessageTypes ={
     GAMEDATA: "GAMEDATA",
     READY: "READY",
-    START: "START"
+    START: "START",
+    CLOSE: "CLOSE"
 }
 
 // this object will be passed back and forth between the server and the clients
 let gameData = {
+    gameId: uuid,
     messageType: MessageTypes.GAMEDATA,
     gameState: GameStates.WAITING,
     boardArray: [[0,0,0],[0,0,0],[0,0,0]],
@@ -38,6 +40,9 @@ let gameData = {
 // It checks what kind of message it was and decides what to do with it
 socket.onmessage = e => {
     let message = JSON.parse(e.data);
+    if(message.gameId != gameData.gameId){
+        return;
+    }
 
     switch(message.messageType){
         case MessageTypes.GAMEDATA:
@@ -91,6 +96,15 @@ const makeMove = (event) => {
     else{
         console.log("Position already occupied");
     }
+}
+
+window.onbeforeunload = () =>{
+    closeMessage = {
+        messageType: MessageTypes.CLOSE,
+        gameId: gameData.gameId
+    }
+    socket.send(JSON.stringify(closeMessage));
+    socket.close();
 }
 
 for(let i = 0; i < spaces.length; i++){
