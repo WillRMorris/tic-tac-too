@@ -12,7 +12,7 @@
         <p>Wins: {{friend.ttt_wins}}</p>
         <p>Losses: {{friend.ttt_losses}}</p>
     </div>
-    <button data-friend-id="{{friend.friendship_id}}" class="new-game-button">New Game</button>
+    <button data-game-id="{{friend.game_id}}" data-user-id="{{friend.user_id}}" data-friend-id="{{friend.friend_id}}" data-friendship-id="{{friend.friendship_id}}" class="new-game-button">New Game</button>
 </div>
 {{/each}}
 

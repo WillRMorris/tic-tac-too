@@ -115,3 +115,18 @@ router.put('/update/:friendId', async (req, res) => {
       res.status(400).json(err);
     }
 })
+
+router.put('/endGame/:gameId', async (req, res) => {
+  try{
+    const friendship = await Friendship.update(req.body,
+      {
+        where: {
+          active_game_id: req.params.gameId,
+        }
+      }
+    )
+      res.json('frienship updated')
+    }catch (err) {
+      res.status(400).json(err);
+    }
+})

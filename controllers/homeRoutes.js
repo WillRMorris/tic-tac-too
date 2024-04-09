@@ -37,10 +37,13 @@ router.get('/friends', withAuth, async (req, res) => {
 
     for(let i = 0; i < friendsData[0].dataValues.friend.length; i++){
         let dataSource = friendsData[0].dataValues.friend[i].dataValues;
+        console.log(dataSource.friendship.dataValues)
         let friendObject = {
             username: dataSource.user_name,
             user_id: dataSource.id,
             friendship_id: dataSource.friendship.dataValues.id,
+            friend_id: dataSource.friendship.dataValues.friend_id,
+            game_id: dataSource.friendship.dataValues.active_game_id,
             //the wins and losses are reversed because the data is from the perspective of the friend
             ttt_wins: dataSource.friendship.dataValues.ttt_losses,
             ttt_losses: dataSource.friendship.dataValues.ttt_wins
