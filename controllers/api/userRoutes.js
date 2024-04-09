@@ -107,4 +107,19 @@ router.put('/:id', async (req, res) =>{
     console.log(err)
   }
 })
+
+router.get('/byname/:username', async (req, res) =>{
+  try{
+
+    const userData = await User.findOne( {where: {
+      user_name: req.params.username
+    }})
+
+    res.json(userData);
+  }
+  catch(err){
+    res.status(400).json(err);
+    console.log(err)
+  }
+})
 module.exports = router;

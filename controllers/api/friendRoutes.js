@@ -54,4 +54,33 @@ async function specifier(data, val){
 }
 module.exports = router;
 
+//creates a friendship between a given friend and the current user
+router.post('/', async (req, res) => {
+  const userId = req.session.user_id;
+  if (req.body.friend_id){
+    const newFriend = [
+
+      {
+        user_id: userId,
+        friend_id: req.body.friend_id
+      },
+      {
+        user_id: req.body.friend_id,
+        friend_id: userId
+      }
+    ]
+    try{
+
+      const friendsData = await Friendship.bulkCreate(newFriend);
+      res.json('friendship created');
+    } 
+    catch (err){
+      res.status(400).json(err);
+    }
+  } else{
+res.status(500).json('no proper friend_id in Post');
+  }
+})
+
+
 //updates a friendship's shared stats.
