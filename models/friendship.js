@@ -28,8 +28,14 @@ Friendship.init(
           ttt_wins:{
             type:DataTypes.INTEGER,
           },
+          ttt_draw:{
+            type:DataTypes.INTEGER,
+          },
           ttt_losses: {
             type:DataTypes.INTEGER,
+          },
+          active_game_id:{
+            type: DataTypes.STRING,
           }
     },
     {
