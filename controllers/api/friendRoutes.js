@@ -85,12 +85,18 @@ router.post('/', async (req, res) => {
 
 //updates a friendship's shared stats.
 router.put('/:friendId', async (req, res) => {
-  const friendship = await Friendship.update(req.body,
-    {
-      where: {
-        user_id: req.session.user_id,
-        friend_id: req.params.friendId
+  try{
+
+    const friendship = await Friendship.update(req.body,
+      {
+        where: {
+          user_id: req.session.user_id,
+          friend_id: req.params.friendId
+        }
       }
+      )
+      res.json('frienship updated')
+    }catch (err) {
+      res.status(400).json(err);
     }
-  )
 })
