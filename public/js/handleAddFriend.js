@@ -1,6 +1,7 @@
 const submit = document.getElementById('new-friend');
 console.log(submit);
  const handleAddFriend = async (event) => {
+    event.preventDefault()
     console.log('whohooooooo');
     const friendName = document.getElementById('friend-name').value.trim();
     console.log(friendName)
@@ -30,6 +31,7 @@ console.log(submit);
     }else {
         alert('failed to reach server');
     }
+    window.location.replace('/friends');
 }
 
 submit.addEventListener('submit', handleAddFriend);
