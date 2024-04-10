@@ -1,8 +1,8 @@
 :root{
-    --main: #2F2963;
-    --secondary: #9B98C3;
-    --highlight: #EF946C;
-    --white: #F3F8F2;
+    --main: #005586;
+    --secondary: #adb6f0;
+    --highlight: #f1bea8;
+    --white: #e1e1e1;
 }
 
 #board-holder{

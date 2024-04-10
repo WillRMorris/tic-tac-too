@@ -1,0 +1,47 @@
+.page-title {
+    color: var(--main);
+    font-size: 30pt;
+}
+
+.btn {
+    color: var(--main);
+    background-color: var(--secondary);
+    outline: auto;
+    border: none;
+    font-size: 1em;
+    margin: 0.5em auto 0;
+    display: block;
+    text-align: center;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--highlight);
+    font-size: 125%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+}
+
+img {
+    outline: auto;
+    outline-color: var(--main);
+}
+
+.image-container img {
+    position: absolute;
+    top: 100px; /* Adjust this value as needed to position the image above the button */
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-50%);
+}
+
