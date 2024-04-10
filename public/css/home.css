@@ -1,0 +1,40 @@
+.page-title {
+    color: var(--main);
+    font-size: 35pt;
+    text-decoration: underline;
+}
+
+.description {
+    color: var(--main);
+    font-size: 20pt;
+    text-align: center;
+    margin-left: 300pt;
+    margin-right: 300pt;
+}
+
+.btn {
+    color: var(--main);
+    background-color: var(--secondary);
+    outline: auto;
+    border: none;
+    font-size: 15pt;
+    margin: 0.5em auto 0;
+    display: block;
+    text-align: center;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--highlight);
+    font-size: 20pt;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    padding: 20px;
+    margin: 0 auto;
+    align-items: center;
+}
+
