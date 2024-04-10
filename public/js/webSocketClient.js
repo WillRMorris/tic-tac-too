@@ -33,7 +33,8 @@ let gameData = {
     message: "new game",
     movesMade: 0,
     xAvailable: true,
-    oAvailable: true
+    oAvailable: true,
+    winner: null
 }
 
 // This is called whenever the client recieves a message from the server
@@ -71,7 +72,7 @@ const gameDataMessage = (message) => {
     console.log(gameData.boardArray[0][2], gameData.boardArray[1][2], gameData.boardArray[2][2]);
     
     if(gameData.gameState == GameStates.GAMEOVER){
-        endGameUpdateDatabase();  
+        updateFriendshipDB(gameData);  
         console.log(gameData.message);
         announcements.innerText = gameData.message;
         announcements.style.display = "block";

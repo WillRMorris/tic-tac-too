@@ -50,6 +50,25 @@ const setupFriendshipData = async () => {
     friendshipData.friendshipId = friendship.id;
 }
 
-const updateFriendshipDB = () => {
+const updateFriendshipDB = async (gameData) => {
+    if(gameData.winner == 0){
+        friendshipData.draws++;
+    }
+    else if(gameData.winner == playerId){
+        friendshipData.wins++;
+    }
+    else{
+        friendshipData.losses++;
+    }
     
+    await fetch(`/api/friends/update/${friendshipData.friendshipId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            active_game_id: null,
+            ttt_wins: friendshipData.wins,
+            ttt_losses: friendshipData.losses,
+            ttt_draw: friendshipData.draws
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    })
 }

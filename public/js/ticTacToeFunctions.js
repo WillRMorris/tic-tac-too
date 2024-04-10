@@ -64,7 +64,3 @@ const updateTurnBanner = () =>{
             break;
     }
 }
-
-const endGameUpdateDatabase = () => {
-    
-}
