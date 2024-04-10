@@ -11,6 +11,7 @@ const checkForGameOver = (gameData) => {
     if(gameData.movesMade >= 9){
         gameData.gameState = GameStates.GAMEOVER;
         gameData.message = "Draw!";
+        gameData.winner = 0;
         return gameData;
     }
 
@@ -62,9 +63,11 @@ const showResults = (gameData, counter) => {
         gameData.gameState = GameStates.GAMEOVER;
         if(counter > 0){
             gameData.message = "X's Win!";
+            gameData.winner = 1;
         }
         else{
             gameData.message = "O's Win!";
+            gameData.winner = -1;
         }
         return [gameData, true];
     }

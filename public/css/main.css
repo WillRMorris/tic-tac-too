@@ -17,3 +17,9 @@ header a {
 header a:hover {
     color: var(--highlight);
 }
+
+@media screen and (max-width: 500px) {
+    header a{
+        font-size: 1.5em;
+    }
+}

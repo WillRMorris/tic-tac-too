@@ -11,7 +11,7 @@ router.get('/tictactoe', async (req, res) => {
 });
 
 router.get('/tictactoe/:id', async (req, res) => {
-    res.render('tictactoe', { uuid: req.params.id, logged_in: req.session.logged_in });
+    res.render('tictactoe', { uuid: req.params.id, logged_in: req.session.logged_in, user_id: req.session.user_id });
 });
 
 router.get('/login', async (req, res) => {

@@ -21,8 +21,9 @@
     </div>
 </div>
 
-<button id="ready-button">Ready</button>
+<button data-logged-in="{{logged_in}}" data-user-id="{{user_id}}" id="ready-button">Ready</button>
 
 <script>const uuid = "{{uuid}}";</script>
 <script src="/js/ticTacToeFunctions.js"></script>
+<script src="/js/updateWinsLoseDraw.js"></script>
 <script src="/js/webSocketClient.js"></script>
