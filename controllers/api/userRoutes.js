@@ -8,6 +8,7 @@ router.post('/login', async (req, res) => {
               where: { user_name: req.body.user_name } 
           });
     
+
         if (!userData) {
           res
             .status(400)

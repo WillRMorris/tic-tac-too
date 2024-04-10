@@ -103,6 +103,15 @@ window.onbeforeunload = () =>{
         messageType: MessageTypes.CLOSE,
         gameId: gameData.gameId
     }
+
+    fetch(`/api/friends/endGame/${gameData.gameId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            active_game_id: null
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+
     socket.send(JSON.stringify(closeMessage));
     socket.close();
 }

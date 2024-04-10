@@ -86,7 +86,7 @@ router.post('/', async (req, res) => {
 //updates a friendship's shared stats.
 router.put('/:friendId', async (req, res) => {
   try{
-
+    console.log(req.params.friendId);
     const friendship = await Friendship.update(req.body,
       {
         where: {
@@ -94,7 +94,37 @@ router.put('/:friendId', async (req, res) => {
           friend_id: req.params.friendId
         }
       }
-      )
+    )
+      res.json('frienship updated')
+    }catch (err) {
+      res.status(400).json(err);
+    }
+})
+
+router.put('/update/:friendId', async (req, res) => {
+  try{
+    const friendship = await Friendship.update(req.body,
+      {
+        where: {
+          id: req.params.friendId,
+        }
+      }
+    )
+      res.json('frienship updated')
+    }catch (err) {
+      res.status(400).json(err);
+    }
+})
+
+router.put('/endGame/:gameId', async (req, res) => {
+  try{
+    const friendship = await Friendship.update(req.body,
+      {
+        where: {
+          active_game_id: req.params.gameId,
+        }
+      }
+    )
       res.json('frienship updated')
     }catch (err) {
       res.status(400).json(err);
