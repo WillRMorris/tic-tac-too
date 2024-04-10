@@ -39,10 +39,10 @@ router.get('/single/:userId/:friendId', async (req, res) => {
 });
 
 async function specifier(data, val) {
-  console.log(data);
+  //console.log(data);
   let set = data;
   let array = set[0]._previousDataValues.target;
-  console.log(array);
+  //console.log(array);
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].dataValues.id == val) {
@@ -116,6 +116,24 @@ router.put('/update/:friendId', async (req, res) => {
     }
 })
 
+// find friendship from currently running game
+router.get('/fromGameId/:gameId', async (req, res) => {
+    try{
+      console.log(req.params.gameId);
+    const friendship = await Friendship.findOne(
+      {
+        where: {
+          active_game_id: req.params.gameId,
+        }
+      }
+    )
+      res.json(friendship);
+    }catch (err) {
+      res.status(400).json(err);
+    }
+});
+
+// update friendship based on game id
 router.put('/endGame/:gameId', async (req, res) => {
   try{
     const friendship = await Friendship.update(req.body,

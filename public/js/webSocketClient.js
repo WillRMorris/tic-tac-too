@@ -71,6 +71,7 @@ const gameDataMessage = (message) => {
     console.log(gameData.boardArray[0][2], gameData.boardArray[1][2], gameData.boardArray[2][2]);
     
     if(gameData.gameState == GameStates.GAMEOVER){
+        endGameUpdateDatabase();  
         console.log(gameData.message);
         announcements.innerText = gameData.message;
         announcements.style.display = "block";
@@ -116,11 +117,13 @@ window.onbeforeunload = () =>{
     socket.close();
 }
 
+setupFriendshipData();
+
 for(let i = 0; i < spaces.length; i++){
     spaces[i].addEventListener("click", makeMove);
 }
 
-document.getElementById("ready-button").addEventListener("click", () => {
+readyButton.addEventListener("click", () => {
     announcements.innerText = "Waiting For Other Player";
     socket.send(JSON.stringify({messageType: MessageTypes.READY}));
 })
