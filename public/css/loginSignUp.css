@@ -28,6 +28,7 @@
 .submit-button:hover {
     cursor: pointer;
     background-color: var(--highlight);
+    font-size: 125%;
 }
 
 input {
