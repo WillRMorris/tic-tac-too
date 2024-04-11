@@ -1,0 +1,16 @@
+#ready-button {
+    color: var(--main);
+    background-color: var(--secondary);
+    outline: auto;
+    border: none;
+    font-size: 15pt;
+    margin: 0.5em auto 0;
+    display: block;
+    text-align: center;
+}
+
+#ready-button:hover {
+    cursor: pointer;
+    background-color: var(--highlight);
+    font-size: 20pt;
+}

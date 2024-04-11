@@ -14,7 +14,7 @@ console.log(submit);
         const response = await unpasredResponse.json();
         if(response != null && response != undefined){
             const correctName = response.user_name;
-            let answer = confirm(`do you want to friend ${correctName}?`)
+            let answer = confirm(`Do you want to friend ${correctName}?`)
             let obj = {friend_id: response.id}
             let sendable = JSON.stringify(obj);
             if(answer){
