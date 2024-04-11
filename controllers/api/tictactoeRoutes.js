@@ -172,9 +172,17 @@ router.get('/newId', async (req, res) => {
 
 // called when a client presses the Join Random Game Button
 // gives them the gameId of the first game in availableRandomGames and removes it from the array
+// if there are no games available it makes a new one
 router.get('/getRandomId', async (req, res) => {
     if(availableRandomGames.length == 0){
-        res.json("No games available");
+        const newGameId = shortid.generate();
+        availableRandomGames.push(newGameId);
+    
+        const newGame = new game;
+        newGame.gameId = newGameId;
+        currentGames.push(newGame);
+    
+        res.json(newGameId);
         return;
     }
 
