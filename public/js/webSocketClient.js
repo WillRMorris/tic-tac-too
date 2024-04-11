@@ -2,7 +2,13 @@ const spaces = document.getElementsByClassName("space");
 const announcements = document.getElementById("announcements");
 
 // this sets up the url where the web socket will be accessed because express-ws can't use relative urls
+
+//use this version for local testing comment it out before deploying
+// const tictactoeSocketUrl = 'ws://' + window.location.hostname + ':3001/api/tictactoe/' + uuid;
+
+//use this version for deploy comment it out while testing
 const tictactoeSocketUrl = 'wss://' + window.location.hostname + '/api/tictactoe/' + uuid;
+
 const socket = new WebSocket(tictactoeSocketUrl);
 
 let playerId = 0;
