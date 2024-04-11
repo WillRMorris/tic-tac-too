@@ -45,7 +45,8 @@ router.get('/friends', withAuth, async (req, res) => {
                 game_id: dataSource.friendship.dataValues.active_game_id,
                 //the wins and losses are reversed because the data is from the perspective of the friend
                 ttt_wins: dataSource.friendship.dataValues.ttt_losses,
-                ttt_losses: dataSource.friendship.dataValues.ttt_wins
+                ttt_losses: dataSource.friendship.dataValues.ttt_wins,
+                ttt_draw: dataSource.friendship.dataValues.ttt_draw
             }
             friendsProcessedData.push(friendObject);
         }

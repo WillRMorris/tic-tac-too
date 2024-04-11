@@ -1,9 +1,11 @@
 <h1 class="page-title">Friends List</h1>
 <form id="new-friend" class="friend-holder">
     <h1>Add Friends</h1>
-    <label for="friend-name">Username:</label>
-    <input id="friend-name" type="text" name="friend-name">
-    <input type="submit" id="add-btn" value="Search">
+    <div class="username-input">
+        <label for="friend-name">Username:</label>
+        <input id="friend-name" type="text" name="friend-name">
+    </div>
+    <input class="search-button" type="submit" id="add-btn" value="Search">
 </form>
 
 {{#each friends as |friend|}}
@@ -12,6 +14,7 @@
     <div class="wins-losses">
         <p>Wins: {{friend.ttt_wins}}</p>
         <p>Losses: {{friend.ttt_losses}}</p>
+        <p>Draws:{{friend.ttt_draw}}</p>
     </div>
     <button data-game-id="{{friend.game_id}}" data-user-id="{{friend.user_id}}" data-friend-id="{{friend.friend_id}}" data-friendship-id="{{friend.friendship_id}}" class="new-game-button">New Game</button>
 </div>
