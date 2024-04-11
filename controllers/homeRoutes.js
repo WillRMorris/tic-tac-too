@@ -4,7 +4,7 @@ const withAuth = require("../utils/auth");
 
 router.get('/', async (req, res) => {
     res.render('home', { logged_in: req.session.logged_in });
-})
+});
 
 router.get('/tictactoe', async (req, res) => {
     res.render('tictactoe', { logged_in: req.session.logged_in });
@@ -16,11 +16,11 @@ router.get('/tictactoe/:id', async (req, res) => {
 
 router.get('/login', async (req, res) => {
     res.render('login', { logged_in: req.session.logged_in });
-})
+});
 
 router.get('/signUp', async (req, res) => {
-    res.render('signUp', { logged_in: req.session.logged_in });
-})
+    res.render('signup', { logged_in: req.session.logged_in });
+});
 
 router.get('/friends', withAuth, async (req, res) => {
     const friendsData = await User.findAll({
