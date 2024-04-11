@@ -39,5 +39,28 @@
 
 .new-game-button:hover{
     cursor: pointer;
-    color:var(--highlight);
+    background-color:var(--highlight);
+}
+
+
+
+#friend-name {
+    width: 150px;
+    height: 20px;
+    float: right;
+    margin-left: 10px;
+    background-color: var(--secondary);
+    color: var(--main);
+}
+
+#add-btn {
+    height: 26px;
+    float: right;
+    margin-left: 10px;
+    background-color: var(--secondary);
+    color: var(--main);
+}
+
+#add-btn:hover {
+    background-color: var(--highlight);
 }

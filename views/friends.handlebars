@@ -2,9 +2,10 @@
 <form id="new-friend" class="friend-holder">
     <h1>Add Friends</h1>
     <label for="friend-name">Username:</label>
-    <input id="friend-name" type="text" name="friend-name"/>
+    <input id="friend-name" type="text" name="friend-name">
     <input type="submit" id="add-btn" value="Search">
 </form>
+
 {{#each friends as |friend|}}
 <div class="friend-holder">
     <h1>{{friend.username}}</h1>
