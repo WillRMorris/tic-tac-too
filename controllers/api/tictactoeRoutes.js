@@ -23,7 +23,8 @@ const MessageTypes ={
     GAMEDATA: "GAMEDATA",
     READY: "READY",
     START: "START",
-    CLOSE: "CLOSE"
+    CLOSE: "CLOSE",
+    FORCECLOSE: "FORCECLOSE"
 }
 
 // the express-ws library adds ws as a new type of route like GET or POST
@@ -41,7 +42,7 @@ router.ws('/:id', (ws, req) => {
                 handleGameDataMessage(wss, message);
                 break;
             case MessageTypes.READY:
-                handleReadyMessage(wss, ws, req.params.id);
+                handleReadyMessage(wss, ws, req);
                 break;
             case MessageTypes.CLOSE:
                 handleCloseMessage(message);
@@ -66,7 +67,9 @@ const handleGameDataMessage = (wss, gameData) =>{
 
 // this is called when a client sends the server a message saying they are ready
 // this happens when the player presses the ready button
-const handleReadyMessage = (wss, ws, gameId) =>{
+const handleReadyMessage = (wss, ws, req) =>{
+    
+    gameId = req.params.id;
     // this object will eventually be sent to the client
     const returnData ={
         gameId: gameId,
@@ -78,6 +81,12 @@ const handleReadyMessage = (wss, ws, gameId) =>{
     const serverData = currentGames.find((thisGame) => {
         return thisGame.gameId == gameId;
     })
+
+    if(!serverData){
+        returnData.messageType = MessageTypes.FORCECLOSE;
+        ws.send(JSON.stringify(returnData));
+        return;
+    }
 
     // if X's and O's have already been assigned players give an error
     if(!serverData.xAvailable && !serverData.oAvailable){
@@ -172,9 +181,17 @@ router.get('/newId', async (req, res) => {
 
 // called when a client presses the Join Random Game Button
 // gives them the gameId of the first game in availableRandomGames and removes it from the array
+// if there are no games available it makes a new one
 router.get('/getRandomId', async (req, res) => {
     if(availableRandomGames.length == 0){
-        res.json("No games available");
+        const newGameId = shortid.generate();
+        availableRandomGames.push(newGameId);
+    
+        const newGame = new game;
+        newGame.gameId = newGameId;
+        currentGames.push(newGame);
+    
+        res.json(newGameId);
         return;
     }
 
