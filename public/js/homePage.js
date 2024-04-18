@@ -1,23 +1,29 @@
-// gets gameId of available game from the server and goes to that page
-const join = async () => {
-    let response = await fetch('/api/tictactoe/getRandomId', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    });
+//grabs all game previews
+const games = document.getElementsByClassName('game-preview');
 
-    const uuid = await response.json();
-    
-    if(uuid == "No games available"){
-        console.log(uuid);
-        return;
+//intializes
+const init = () =>{
+    setGameListeners();   
+}
+//sets eventlisteners to all game preview
+const setGameListeners = () =>{
+    for (let i = 0; i< games.length; i++){
+        games[i].addEventListener('click', handleGetGame);
     }
-
-    response = await fetch(`/tictactoe/${uuid.toString()}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    document.location.replace(response.url);
+    
+}
+//handles redirecting to the page for the corrisponding game
+const handleGetGame = (event) =>{
+    const game = getGame(event.currentTarget);
+    window.location.replace(`/games/${game}`);
 }
 
-document.getElementById("join-button").addEventListener("click", join);
+//element ids must be formated gameName-preview to work
+const getGame = (elem) =>{
+    let id = elem.getAttribute('id');
+    id = id.split('-');
+    const game = id[0];
+    return game;
+}
+
+init();
