@@ -137,5 +137,6 @@ for(let i = 0; i < spaces.length; i++){
 
 readyButton.addEventListener("click", () => {
     announcements.innerText = "Waiting For Other Player";
+    readyButton.style.display = "none"
     socket.send(JSON.stringify({messageType: MessageTypes.READY}));
 })
