@@ -1,5 +1,5 @@
 const User = require('./User');
-const Friendship = require('./Friendship')
+const Friendship = require('./friendship')
 
 User.belongsToMany(User, {
     as: 'target',

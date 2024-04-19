@@ -6,14 +6,6 @@ router.get('/', async (req, res) => {
     res.render('home', { logged_in: req.session.logged_in });
 });
 
-router.get('/tictactoe', async (req, res) => {
-    res.render('tictactoe', { logged_in: req.session.logged_in });
-});
-
-router.get('/tictactoe/:id', async (req, res) => {
-    res.render('tictactoe', { uuid: req.params.id, logged_in: req.session.logged_in, user_id: req.session.user_id });
-});
-
 router.get('/login', async (req, res) => {
     res.render('login', { logged_in: req.session.logged_in });
 });
@@ -55,5 +47,4 @@ router.get('/friends', withAuth, async (req, res) => {
     res.render('friends', { friends: friendsProcessedData, logged_in: req.session.logged_in });
 });
 
-
-module.exports = router;
+module.exports= router;
