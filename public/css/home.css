@@ -38,3 +38,12 @@
     margin: 0 auto;
     align-items: center;
 }
+#games-preview{
+    justify-content: space-around;
+    background-color: var(--main);
+    color: var(--secondary);
+}
+.game-preview{
+    border: 0.20em solid black;
+    padding: 2em;
+}
