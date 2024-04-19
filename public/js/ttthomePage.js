@@ -12,7 +12,7 @@ const join = async () => {
         return;
     }
 
-    response = await fetch(`/tictactoe/${uuid.toString()}`, {
+    response = await fetch(`ttt/tictactoe/${uuid.toString()}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
     });
