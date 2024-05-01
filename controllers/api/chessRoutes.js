@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const WebSocket = require('ws');
-const {checkForGameOver, GameStates} = require('../../utils//ttt/tictactoeHelpers');
+const {checkForGameOver, GameStates} = require('../../utils/ttt/tictactoeHelpers');
 const shortid = require('shortid');
 
 //this array keeps track of the uid for random games that are waiting for a second player to join
@@ -89,36 +89,36 @@ const handleReadyMessage = (wss, ws, req) =>{
     }
 
     // if X's and O's have already been assigned players give an error
-    if(!serverData.xAvailable && !serverData.oAvailable){
+    if(!serverData.whiteAvailable && !serverData.blackAvailable){
         returnData.error = "Too many players";
     }
     // if both X's and O's are available, randomly assign one to the client
-    else if(serverData.xAvailable && serverData.oAvailable){
+    else if(serverData.whiteAvailable && serverData.blackAvailable){
         const randNum = Math.random();
         if(randNum > 0.5){
             returnData.playerId = 1;
-            serverData.xAvailable = false;
+            serverData.whiteAvailable = false;
         }
         else{
             returnData.playerId = -1;
-            serverData.oAvailable = false;
+            serverData.blackAvailable = false;
         }
     }
-    // if O's have been taken, assign the client X's
+    // if black has been taken, assign the client white
     // Both clients have now pressed ready so set the allReady variable to true
-    else if(serverData.xAvailable){
+    else if(serverData.whiteAvailable){
         returnData.playerId = 1;
         returnData.allReady = true;
         serverData.allReady = true;
-        serverData.xAvailable = false;
+        serverData.whiteAvailable = false;
     }
-    // if X's have been taken, assign the client O's
+    // if white has been taken, assign the client black
     // Both clients have now pressed ready so set the allReady variable to true
     else{
         returnData.playerId = -1;
         returnData.allReady = true;
         serverData.allReady = true;
-        serverData.oAvailable = false;
+        serverData.blackAvailable = false;
     }
 
     // send return data to client

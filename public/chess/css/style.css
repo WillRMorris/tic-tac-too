@@ -1,0 +1,187 @@
+
+:root{
+   --normalBorderWidth: 0.1rem;
+   --highlightedBorderWidth: thick;
+   --defaultBorderColor: black;
+   --selectedBorderColor: green;
+   --canMoveToBorderColor: white;
+   --grey: #bbbbbb;
+   --green: rgb(22 101 52);
+}
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    /* margin: 4.5rem; */
+    margin-top: 0;
+    padding-top: 1rem;
+}
+
+.board {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 42rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    border-radius: .5rem;
+    display: grid;
+    grid-template-columns: repeat(8, 12.5%);
+    grid-template-rows: repeat(8);
+    background-color: #bbbbbb;
+    color: rgb(22 101 52); 
+    box-shadow: 0 0 2rem #444444;
+}
+
+.spaces {
+    display: block;
+    padding: .2rem;
+    border-width: var(--normalBorderWidth);
+    border-color: black;
+    overflow: hidden;
+    position: relative;
+    cursor: default;
+}
+
+.board > .spaces {
+    aspect-ratio: 1/1;
+}
+
+.darker {
+    background-color: rgb(22 101 52);
+    color: #bbbbbb;
+}
+#endGameContainer {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    z-index: 2;
+}
+
+#end-game{
+    text-align: center;
+    background-color: black;
+    opacity:0.8;
+    color: white;
+    padding: 0.2em;
+    font-size: 3em;
+}
+
+#promotionMenu{
+    display: none;
+    position: absolute;
+    top: 30%;
+    box-sizing: border-box;
+    margin: 0 5%;
+    background-color: var(--grey);
+    border: 1rem solid black;
+    border-radius: .5em;
+    font-size: 1.5em;
+    text-align: center;
+    width: 90%;
+}
+
+.promotionButton{
+    width: 12%;
+    height: 3em;
+    position: relative;
+}
+
+#promotionContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.promotionButton img{
+    width: 100%;
+}
+
+#warning{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    text-align: center;
+    background-color: black;
+    opacity:0.8;
+    color: white;
+    padding: 0.2em;
+    font-size: 3em;
+}
+
+#navigator-buttons{
+    position:absolute;
+    bottom: 10%;
+    left: 80%;
+    box-sizing: border-box;
+}
+
+/* undo button styles */
+#revert {
+    background-color: var(--grey);
+    font-weight: 700;
+    border-radius: 25%;
+    border: 0.25rem solid black;
+    padding: 1rem;
+}
+#revert:active{
+    background-color: var(--green);
+    box-shadow: 0.25rem 0 0.25rem black;
+}
+
+/* this just prevents the picture of the piece from being clicked on */
+/* we only want to click on the square itself */
+.piece-img{
+    pointer-events: none;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    object-fit: cover;
+}
+
+/* this is the piece that actually does the moving in the animation */
+#movingPiece{
+    display: none;
+    position: absolute;
+    max-width: calc(42rem * 0.12);
+    width: 12%;
+    padding: .2rem;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    color: rgba(0,0,0,0);
+
+    left: 50%;
+    top: 50%;
+}
+
+@media screen and (max-width: 1100px){
+    #navigator-buttons{
+        position: relative;
+        left: 0;
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (max-width: 650px){
+    body{
+        margin: 0;
+    }
+
+    .promotionButton{
+        width: 12%;
+        height: 10vw;
+        position: relative;
+    }
+
+    .spaces {
+        font-size: 0.7em;
+    }
+}
