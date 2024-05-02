@@ -26,13 +26,13 @@ const updateBoard = () => {
     for(let i = 0; i < spaces.length; i++){
         switch(gameData.boardArray[spaces[i].getAttribute("data-x")][spaces[i].getAttribute("data-y")]){
             case 0:
-                spaces[i].innerHTML = `<img src="/images/blank.svg">`;
+                spaces[i].innerHTML = `<img src="/ttt/images/blank.svg">`;
                 break;
             case 1:
-                spaces[i].innerHTML = `<img src="/images/x.svg">`;
+                spaces[i].innerHTML = `<img src="/ttt/images/x.svg">`;
                 break;
             case -1:
-                spaces[i].innerHTML = `<img src="/images/circle.svg">`;
+                spaces[i].innerHTML = `<img src="/ttt/images/circle.svg">`;
                 break;
         }
     }
