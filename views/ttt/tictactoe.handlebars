@@ -1,0 +1,29 @@
+<h1 id="announcements">Press Ready</h1>
+<h1 id="turn-message">Waiting For Game To Start</h1>
+<div id="board-holder">
+    <img id="board" src="/ttt/images/board.svg">
+    <div id="space-holder-holder">
+        <div class="space-holder">
+            <button data-x="0" data-y="0" class="space"><img src="/ttt/images/blank.svg"></button>
+            <button data-x="1" data-y="0" class="space"><img src="/ttt/images/blank.svg"></button>
+            <button data-x="2" data-y="0" class="space"><img src="/ttt/images/blank.svg"></button>
+        </div>
+            <div class="space-holder">
+            <button data-x="0" data-y="1" class="space"><img src="/ttt/images/blank.svg"></button>
+            <button data-x="1" data-y="1" class="space"><img src="/ttt/images/blank.svg"></button>
+            <button data-x="2" data-y="1" class="space"><img src="/ttt/images/blank.svg"></button>
+        </div>
+            <div class="space-holder">
+            <button data-x="0" data-y="2" class="space"><img src="/ttt/images/blank.svg"></button>
+            <button data-x="1" data-y="2" class="space"><img src="/ttt/images/blank.svg"></button>
+            <button data-x="2" data-y="2" class="space"><img src="/ttt/images/blank.svg"></button>
+        </div>
+    </div>
+</div>
+
+<button data-logged-in="{{logged_in}}" data-user-id="{{user_id}}" id="ready-button">Ready</button>
+
+<script>const uuid = "{{uuid}}";</script>
+<script src="/ttt/js/ticTacToeFunctions.js"></script>
+<script src="/ttt/js/updateWinsLoseDraw.js"></script>
+<script src="/ttt/js/webSocketClient.js"></script>
